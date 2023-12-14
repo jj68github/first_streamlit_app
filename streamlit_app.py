@@ -25,6 +25,11 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
+# create a repeatable block to call a function
+def get_fruityvice_data (this _fruit_choice):
+   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +fruit_choice)
+   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+   return fruityvice_normalized
 # new section to display Fruityvice Fruit Advice
 streamlit.header("Fruityvice Fruit Advice!")
 try:
