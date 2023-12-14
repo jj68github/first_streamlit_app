@@ -44,6 +44,10 @@ except URLerror as e:
    streamlit.error()
 #import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+#my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
+#my_data_rows = my_cur.fetchall()
+
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur():
          my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
